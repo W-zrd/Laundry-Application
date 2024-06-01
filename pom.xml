@@ -18,13 +18,15 @@
             <version>4.11</version>
         </dependency>
     </dependencies>
-<distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/W-zrd/Laundry-Application</url>
-    </repository>
-  </distributionManagement>
+    
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Packages</name>
+          <url>https://maven.pkg.github.com/W-zrd/Laundry-Application</url>
+        </repository>
+      </distributionManagement>
+    
     <build>
     <plugins>
         <plugin>
