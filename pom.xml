@@ -22,7 +22,7 @@
     <repository>
       <id>github</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/phusallver/mkepl_13</url>
+      <url>https://maven.pkg.github.com/W-zrd/Laundry-Application</url>
     </repository>
   </distributionManagement>
     <build>
