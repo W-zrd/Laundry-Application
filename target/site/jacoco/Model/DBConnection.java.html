@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DBConnection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">laundryapplication</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">DBConnection.java</span></div><h1>DBConnection.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Model;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+/**
+ *
+ * @author Haikal
+ */
+<span class="nc" id="L13">public class DBConnection {</span>
+    private static final String url = &quot;jdbc:mysql://117.53.47.247:3306/Laundry&quot;;
+    private static final String username = &quot;Gu3st&quot;;
+    private static final String password = &quot;gu3ss-my-passwd&quot;;
+    private static final String url2 = &quot;jdbc:mysql://localhost:3306/Laundry&quot;;
+    private static final String username2 = &quot;Wzrd&quot;;
+    private static final String password2 = &quot;Humanzz1337&quot;;
+    
+    public static Connection conn;
+    
+    public static void connect() {
+        try{
+<span class="nc" id="L25">            conn = DriverManager.getConnection(url,username,password);</span>
+<span class="nc" id="L26">            System.out.println(&quot;Connected to database&quot;);</span>
+            
+<span class="nc" id="L28">        } catch(SQLException ex) {</span>
+<span class="nc" id="L29">            System.out.println(&quot;Connection to database error! &quot;+ ex);</span>
+<span class="nc" id="L30">        } catch (Exception ex){</span>
+<span class="nc" id="L31">            System.out.println(&quot;NO responses from server&quot;);</span>
+        }
+<span class="nc" id="L33">    }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

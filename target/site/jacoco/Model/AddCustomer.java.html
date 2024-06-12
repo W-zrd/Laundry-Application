@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddCustomer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">laundryapplication</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">AddCustomer.java</span></div><h1>AddCustomer.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Model;
+
+import static Model.DBConnection.conn;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author flxnzz
+ */
+public class AddCustomer extends AddDataToTable{
+    private Customer pelanggan;
+    private double jmlCucian;
+    private javax.swing.JTable table;
+    private DefaultTableModel model;
+    private ResultSet rs;
+    
+<span class="nc" id="L26">    public AddCustomer(javax.swing.JTable jTable){</span>
+<span class="nc" id="L27">        rs = getResultSet();</span>
+<span class="nc" id="L28">        model = new DefaultTableModel(new String[]</span>
+<span class="nc" id="L29">        {</span>
+<span class="nc" id="L30">            &quot;ID&quot;, &quot;Nama&quot;, &quot;Waktu Pesan&quot;,&quot;Jadwal Pengiriman&quot;, &quot;Total Harga&quot;</span>
+<span class="nc" id="L31">        }, 0);</span>
+        
+<span class="nc" id="L33">        jTable.setModel(model);</span>
+<span class="nc" id="L34">    }</span>
+<span class="nc" id="L35">    public AddCustomer(Customer pelanggan){</span>
+<span class="nc" id="L36">        this.pelanggan = pelanggan;</span>
+<span class="nc" id="L37">    }</span>
+    
+    
+    public void insertData(javax.swing.JFrame frame, int harga){
+<span class="nc" id="L41">        Layanan layanan_kilo = new Layanan_Kiloan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());</span>
+<span class="nc" id="L42">        Layanan layanan_pcs = new Layanan_pcsan(pelanggan.getJenisCucian(), pelanggan.getJenisLayanan(), pelanggan.getJumlahCucian());</span>
+<span class="nc" id="L43">        Connection connection = null;</span>
+<span class="nc" id="L44">        PreparedStatement statement = null;</span>
+        try {
+<span class="nc" id="L46">            DBConnection.connect();</span>
+            // 2. Prepare the SQL statement
+<span class="nc" id="L48">            String sql = &quot;INSERT INTO dataPelanggan (name, address, contact, laundry_weight, service_type, laundry_type) VALUES (?, ?, ?, ?, ?, ?)&quot;;</span>
+<span class="nc" id="L49">            statement = conn.prepareStatement(sql);</span>
+
+            // 3. Set the parameter values
+<span class="nc" id="L52">            statement.setString(1, pelanggan.getNama());</span>
+<span class="nc" id="L53">            statement.setString(2, pelanggan.getAlamat());</span>
+<span class="nc" id="L54">            statement.setString(3, pelanggan.getKontak());</span>
+<span class="nc" id="L55">            statement.setDouble(4, pelanggan.getJumlahCucian());</span>
+<span class="nc" id="L56">            statement.setString(5, pelanggan.getJenisLayanan());</span>
+<span class="nc" id="L57">            statement.setString(6, pelanggan.getJenisCucian());</span>
+<span class="nc" id="L58">            AddTransaction transaksi = new AddTransaction(this.pelanggan);</span>
+<span class="nc" id="L59">            transaksi.insertTransaksi(frame, harga);</span>
+            // 4. Execute the SQL statement
+<span class="nc" id="L61">            int rowsInserted = statement.executeUpdate();</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            if (rowsInserted &gt; 0) {</span>
+                String layanan;
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                if(pelanggan.getJenisCucian() == &quot;Satuan&quot;){</span>
+<span class="nc" id="L65">                    layanan = layanan_pcs.getPrintLayanan();</span>
+<span class="nc" id="L66">                }else{</span>
+<span class="nc" id="L67">                    layanan = layanan_kilo.getPrintLayanan();</span>
+                }
+<span class="nc" id="L69">                JOptionPane.showMessageDialog(frame, &quot;Data Sudah Masuk! \n&quot;+ layanan);</span>
+            }
+<span class="nc" id="L71">        } catch (SQLException ex) {</span>
+<span class="nc" id="L72">            JOptionPane.showMessageDialog(frame, &quot;Error inserting data: &quot; + ex.getMessage());</span>
+        } finally {
+            try {
+<span class="nc bnc" id="L75" title="All 2 branches missed.">                if (statement != null) {</span>
+<span class="nc" id="L76">                    statement.close();</span>
+                }
+<span class="nc bnc" id="L78" title="All 2 branches missed.">                if (connection != null) {</span>
+<span class="nc" id="L79">                    connection.close();</span>
+                }
+<span class="nc" id="L81">            } catch (SQLException ex) {</span>
+<span class="nc" id="L82">                JOptionPane.showMessageDialog(frame, &quot;Error closing connection: &quot; + ex.getMessage());</span>
+            }
+        }
+<span class="nc" id="L85">    }</span>
+
+    @Override
+    public void addToTable(String sql, PreparedStatement statement) {
+        try {
+<span class="nc" id="L90">            DBConnection.connect();</span>
+
+            // Retrieve the data
+<span class="nc" id="L93">            rs = statement.executeQuery();</span>
+
+            // Add the data to the DefaultTableModel
+<span class="nc bnc" id="L96" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L97">                Object[] row = new Object[5];</span>
+<span class="nc" id="L98">                row[0] = rs.getInt(&quot;ID&quot;);</span>
+<span class="nc" id="L99">                row[1] = rs.getString(&quot;nama&quot;);</span>
+<span class="nc" id="L100">                row[2] = rs.getString(&quot;waktuPesan&quot;);</span>
+<span class="nc" id="L101">                row[3] = rs.getString(&quot;jadwalKirim&quot;);</span>
+<span class="nc" id="L102">                row[4] = rs.getDouble(&quot;cost&quot;);</span>
+<span class="nc" id="L103">                model.addRow(row);</span>
+            }
+<span class="nc" id="L105">        } catch (SQLException ex) {</span>
+<span class="nc" id="L106">            System.out.println(&quot;Error retrieving data: &quot; + ex.getMessage());</span>
+        }
+<span class="nc" id="L108">    }</span>
+    
+    @Override
+    // Tampilkan data transaksi
+    public void showData() {
+        try { 
+<span class="nc" id="L114">            String sql = &quot;SELECT * FROM transaksi&quot;;</span>
+<span class="nc" id="L115">            PreparedStatement statement = conn.prepareStatement(sql);</span>
+<span class="nc" id="L116">            addToTable(sql, statement);</span>
+<span class="nc" id="L117">        } catch (SQLException ex) {</span>
+<span class="nc" id="L118">            System.out.println(&quot;Error retrieving data: &quot; + ex.getMessage());</span>
+        }
+<span class="nc" id="L120">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
