@@ -37,5 +37,4 @@ public class Transaksi extends Layanan {
         return 0;
     }
     
-    
 }
