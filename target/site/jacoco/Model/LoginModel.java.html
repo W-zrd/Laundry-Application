@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">laundryapplication</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">LoginModel.java</span></div><h1>LoginModel.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Model;
+
+import static Model.DBConnection.conn;
+import View.HomeView;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author flxnzz
+ */
+public class LoginModel {
+    private final String username;
+    private final char[] password;
+    
+<span class="nc" id="L22">    public LoginModel(String username, char[] password){</span>
+<span class="nc" id="L23">        this.password = password;</span>
+<span class="nc" id="L24">        this.username = username;</span>
+<span class="nc" id="L25">    }</span>
+    
+    public void login(javax.swing.JFrame loginFrame){
+<span class="nc" id="L28">        DBConnection.connect();</span>
+        
+<span class="nc" id="L30">        String sql = &quot;SELECT * FROM users WHERE User = ? AND Password = ?&quot;;</span>
+<span class="nc" id="L31">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
+<span class="nc" id="L32">            stmt.setString(1, username);</span>
+<span class="nc" id="L33">            stmt.setString(2, new String(password));</span>
+<span class="nc" id="L34">            ResultSet rs = stmt.executeQuery();</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">            if (rs.next()) {</span>
+<span class="nc" id="L36">                loginFrame.setVisible(false);</span>
+<span class="nc" id="L37">                new HomeView().setVisible(true);</span>
+<span class="nc" id="L38">            } else {</span>
+<span class="nc" id="L39">                JOptionPane.showMessageDialog(loginFrame, &quot;Invalid username or password.&quot;, &quot;Warning&quot;, JOptionPane.WARNING_MESSAGE);</span>
+            }
+<span class="nc" id="L41">        } catch (SQLException ex) {</span>
+<span class="nc" id="L42">            System.out.println(&quot;An error occurred while checking the user credentials: &quot; + ex.getMessage());</span>
+        }
+<span class="nc" id="L44">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

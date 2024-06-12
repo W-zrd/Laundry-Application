@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TransaksiTest" time="0.016" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TransaksiTest" time="0.203" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
     <property name="java.class.path" value="/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/test-classes:/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/classes:/home/flxnzz/.m2/repository/mysql/mysql-connector-java/8.0.25/mysql-connector-java-8.0.25.jar:/home/flxnzz/.m2/repository/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar:/home/flxnzz/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/flxnzz/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/flxnzz/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/flxnzz/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/flxnzz/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/flxnzz/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:"/>
     <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.font.fontmanager" value="sun.awt.X11FontManager"/>
     <property name="java.vendor.url" value="https://ubuntu.com/"/>
-    <property name="user.timezone" value="Asia/Jakarta"/>
     <property name="os.name" value="Linux"/>
     <property name="java.vm.specification.version" value="17"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/surefire/surefirebooter-20240612141943838_3.jar /home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/surefire 2024-06-12T14-19-39_623-jvmRun1 surefire-20240612141943838_1tmp surefire_0-20240612141943838_2tmp"/>
+    <property name="sun.java.command" value="/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/surefire/surefirebooter-20240612213907288_3.jar /home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/surefire 2024-06-12T21-39-07_078-jvmRun1 surefire-20240612213907288_1tmp surefire_0-20240612213907288_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/test-classes:/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/classes:/home/flxnzz/.m2/repository/mysql/mysql-connector-java/8.0.25/mysql-connector-java-8.0.25.jar:/home/flxnzz/.m2/repository/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar:/home/flxnzz/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/flxnzz/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/flxnzz/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/flxnzz/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/flxnzz/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/flxnzz/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/surefire/surefirebooter-20240612141943838_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/flxnzz/Documents/Code/Github Projects/Laundry-Application/target/surefire/surefirebooter-20240612213907288_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.11+9-Ubuntu-122.04.1"/>
     <property name="user.name" value="flxnzz"/>
@@ -54,10 +51,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testSatuanExpress" classname="TransaksiTest" time="0.003"/>
-  <testcase name="testKiloanKilat" classname="TransaksiTest" time="0.001"/>
-  <testcase name="testSatuanKilat" classname="TransaksiTest" time="0.001"/>
-  <testcase name="testKiloanExpress" classname="TransaksiTest" time="0.001"/>
-  <testcase name="testSatuanRegular" classname="TransaksiTest" time="0.001"/>
-  <testcase name="testKiloanRegular" classname="TransaksiTest" time="0.001"/>
+  <testcase name="testSatuanExpress" classname="TransaksiTest" time="0.092"/>
+  <testcase name="testKiloanKilat" classname="TransaksiTest" time="0.002"/>
+  <testcase name="testSatuanKilat" classname="TransaksiTest" time="0.004"/>
+  <testcase name="testKiloanExpress" classname="TransaksiTest" time="0.004"/>
+  <testcase name="testSatuanRegular" classname="TransaksiTest" time="0.004"/>
+  <testcase name="testKiloanRegular" classname="TransaksiTest" time="0.005"/>
 </testsuite>

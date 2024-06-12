@@ -1,0 +1,46 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+laundryapplication,Model,CetakLaporan,123,0,2,0,22,0,3,0,2,0
+laundryapplication,Model,Layanan_pcsan,26,0,6,0,9,0,5,0,2,0
+laundryapplication,Model,LoginModel,60,0,2,0,18,0,3,0,2,0
+laundryapplication,Model,ShowCustomer.Search,54,0,0,0,12,0,2,0,2,0
+laundryapplication,Model,AddCustomer,253,0,10,0,61,0,10,0,5,0
+laundryapplication,Model,Transaksi,2,76,3,13,1,16,3,7,0,2
+laundryapplication,Model,Layanan_Kiloan,26,0,6,0,9,0,5,0,2,0
+laundryapplication,Model,RegisterModel,76,0,2,0,23,0,3,0,2,0
+laundryapplication,Model,AddDataToTable,12,0,0,0,4,0,4,0,4,0
+laundryapplication,Model,Customer,39,0,0,0,14,0,7,0,7,0
+laundryapplication,Model,AddTransaction,90,0,2,0,28,0,5,0,4,0
+laundryapplication,Model,DBConnection,24,0,0,0,8,0,2,0,2,0
+laundryapplication,Model,Layanan,2,21,0,0,1,8,1,4,1,4
+laundryapplication,Model,ShowCustomer,189,0,2,0,45,0,7,0,6,0
+laundryapplication,Controller,Driver,12,0,0,0,5,0,2,0,2,0
+laundryapplication,Controller,MenuController,27,0,0,0,10,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,RegisterView,907,0,4,0,205,0,10,0,8,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new DefaultTableModel() {...},17,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,LoginView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,LoginView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,RegisterView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,LoginView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,LoginView,847,0,4,0,189,0,9,0,7,0
+laundryapplication,View,LoginView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,RegisterView.new Runnable() {...},9,0,0,0,3,0,2,0,2,0
+laundryapplication,View,RegisterView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,RegisterView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,RegisterView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,RegisterView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView.new ActionListener() {...},11,0,0,0,3,0,2,0,2,0
+laundryapplication,View,HomeView,1996,0,0,0,444,0,17,0,17,0
