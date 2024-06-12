@@ -35,7 +35,7 @@ public class TransaksiTest {
     void testSatuanRegular() {
         Transaksi trans = new Transaksi("Satuan", "Regular", 4);
         int expected = 20000;
-        int actual = trans.getBiaya()+1;
+        int actual = trans.getBiaya();
         assertEquals(expected, actual);
     }
 
