@@ -18,7 +18,7 @@ public class TransaksiTest {
     @Test
     void testKiloanExpress() {
         Transaksi trans = new Transaksi("Kiloan", "Express", 2);
-        int expected = 20000;
+        int expected = 20000 + 1;
         int actual = trans.getBiaya();
         assertEquals(expected, actual);
     }
