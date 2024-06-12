@@ -15,7 +15,7 @@ public class Transaksi extends Layanan {
         super(pilihanLayanan,pilihanWaktu, cucian);
     }
     // 1 = Reguler, 2 = Express, 3 = Kilat
-    public int getBiaya1(){
+    public int getBiaya(){
         if(super.getLayanan().equals("Kiloan")){
             if(super.getWaktu().equals("Regular")){
                 return (int) (6000*super.getCucian());
