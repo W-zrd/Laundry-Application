@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShowCustomer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">laundryapplication</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">ShowCustomer.java</span></div><h1>ShowCustomer.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Model;
+
+import static Model.DBConnection.conn;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+/**
+ *
+ * @author flxnzz
+ */
+public class ShowCustomer extends AddDataToTable{
+    private PreparedStatement statement;
+    private ResultSet rs;
+    private DefaultTableModel Model;
+    private javax.swing.JTable table;
+    private String sql;
+<span class="nc" id="L23">    private static final ArrayList&lt;Customer&gt; customerList = new ArrayList&lt;&gt;();</span>
+    
+    public ArrayList&lt;Customer&gt; getCustomerList(){
+<span class="nc" id="L26">        return this.customerList;</span>
+    }
+    
+<span class="nc" id="L29">    public ShowCustomer(javax.swing.JTable jTable){</span>
+<span class="nc" id="L30">        rs = getResultSet();</span>
+<span class="nc" id="L31">        this.Model = getModel();</span>
+<span class="nc" id="L32">        this.table = getTable();</span>
+        
+<span class="nc" id="L34">        table = jTable;</span>
+<span class="nc" id="L35">        Model = new DefaultTableModel(new String[]</span>
+<span class="nc" id="L36">        {</span>
+<span class="nc" id="L37">            &quot;ID&quot;, &quot;Nama&quot;, &quot;Alamat&quot;, &quot;Kontak&quot;, &quot;Berat/Jml Cucian&quot;, &quot;Jenis Layanan&quot;, &quot;Jenis Cucian&quot;</span>
+<span class="nc" id="L38">        }, 0);</span>
+        
+<span class="nc" id="L40">        jTable.setModel(Model);</span>
+<span class="nc" id="L41">    }</span>
+    
+<span class="nc" id="L43">    public ShowCustomer(){</span>
+        
+<span class="nc" id="L45">    }</span>
+    
+    // Nambah data pelanggan ke tabel untuk ditampilkan ke layar
+    @Override
+    public void addToTable(String sql, PreparedStatement statement){
+        try {
+<span class="nc" id="L51">            DBConnection.connect();</span>
+
+            // Retrieve the data
+<span class="nc" id="L54">            ResultSet rs = getResultSet();</span>
+<span class="nc" id="L55">            rs = statement.executeQuery();</span>
+
+            // Add the data to the DefaultTableModel
+<span class="nc bnc" id="L58" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L59">                Object[] row = new Object[7];</span>
+<span class="nc" id="L60">                row[0] = rs.getInt(&quot;ID&quot;);</span>
+<span class="nc" id="L61">                row[1] = rs.getString(&quot;name&quot;);</span>
+<span class="nc" id="L62">                row[2] = rs.getString(&quot;address&quot;);</span>
+<span class="nc" id="L63">                row[3] = rs.getString(&quot;contact&quot;);</span>
+<span class="nc" id="L64">                row[4] = rs.getDouble(&quot;laundry_weight&quot;);</span>
+<span class="nc" id="L65">                row[5] = rs.getString(&quot;service_type&quot;);</span>
+<span class="nc" id="L66">                row[6] = rs.getString(&quot;laundry_type&quot;);</span>
+<span class="nc" id="L67">                Model.addRow(row);</span>
+<span class="nc" id="L68">                customerList.add(new Customer(rs.getString(&quot;name&quot;), </span>
+<span class="nc" id="L69">                        rs.getString(&quot;address&quot;),</span>
+<span class="nc" id="L70">                        rs.getString(&quot;contact&quot;),</span>
+<span class="nc" id="L71">                        rs.getDouble(&quot;laundry_weight&quot;), </span>
+<span class="nc" id="L72">                        rs.getString(&quot;service_type&quot;),</span>
+<span class="nc" id="L73">                        rs.getString(&quot;laundry_type&quot;))</span>
+                );
+            }
+<span class="nc" id="L76">            rs.close();</span>
+<span class="nc" id="L77">            statement.close();</span>
+<span class="nc" id="L78">        } catch (SQLException ex) {</span>
+<span class="nc" id="L79">            System.out.println(&quot;Error retrieving data: &quot; + ex.getMessage());</span>
+        }
+<span class="nc" id="L81">    }</span>
+    
+    @Override
+    public void showData(){
+        try { 
+<span class="nc" id="L86">            sql = &quot;SELECT * FROM dataPelanggan&quot;;</span>
+<span class="nc" id="L87">            statement = conn.prepareStatement(sql);</span>
+<span class="nc" id="L88">            addToTable(sql, statement);</span>
+<span class="nc" id="L89">        } catch (SQLException ex) {</span>
+<span class="nc" id="L90">            System.out.println(&quot;Error retrieving data: &quot; + ex.getMessage());</span>
+        }
+<span class="nc" id="L92">    }</span>
+
+    
+    // Inner Class
+    public class Search {
+        javax.swing.JTextField searchField;
+        
+<span class="nc" id="L99">        public Search(javax.swing.JTextField searchField){</span>
+<span class="nc" id="L100">            this.searchField = searchField;</span>
+<span class="nc" id="L101">        }</span>
+        
+        public void searchData() {
+<span class="nc" id="L104">            String searchQuery = searchField.getText();</span>
+<span class="nc" id="L105">            Model.setNumRows(0); // clear table</span>
+            
+            try {
+<span class="nc" id="L108">                sql = &quot;SELECT * FROM dataPelanggan WHERE name LIKE ?&quot;;</span>
+<span class="nc" id="L109">                statement = conn.prepareStatement(sql);</span>
+<span class="nc" id="L110">                statement.setString(1, &quot;%&quot; + searchQuery + &quot;%&quot;);</span>
+<span class="nc" id="L111">                addToTable(sql, statement);</span>
+<span class="nc" id="L112">            } catch (SQLException ex) {</span>
+<span class="nc" id="L113">                System.out.println(&quot;Error executing search query: &quot; + ex.getMessage());</span>
+            }
+<span class="nc" id="L115">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

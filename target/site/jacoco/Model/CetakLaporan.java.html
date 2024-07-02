@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CetakLaporan.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">laundryapplication</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">CetakLaporan.java</span></div><h1>CetakLaporan.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Model;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author flxnzz
+ */
+public class CetakLaporan{
+    //private final Customer pelanggan;
+<span class="nc" id="L22">    private ArrayList&lt;Customer&gt; customerList = new ArrayList&lt;&gt;();</span>
+    
+<span class="nc" id="L24">    public CetakLaporan(ArrayList&lt;Customer&gt; customerList){</span>
+<span class="nc" id="L25">        this.customerList = customerList;</span>
+<span class="nc" id="L26">    }</span>
+    
+    public void DownloadAsTxt(javax.swing.JFrame frame){
+        
+<span class="nc" id="L30">        String filePath = &quot;output.txt&quot;;</span>
+<span class="nc" id="L31">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;d MMMM yyyy&quot;, new Locale(&quot;nl&quot;));</span>
+<span class="nc" id="L32">        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {</span>
+<span class="nc" id="L33">            writer.print(&quot;Laporan Laundry pada tanggal: &quot;);</span>
+<span class="nc" id="L34">            writer.println(LocalDateTime.now().format(formatter));</span>
+<span class="nc" id="L35">            writer.println(&quot;-----------------------------------&quot;);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            for (int i=0; i&lt;customerList.size(); i++){</span>
+<span class="nc" id="L37">                writer.println(&quot;-----  Informasi Pelanggan &quot; + (i+1) + &quot; -----&quot;);</span>
+<span class="nc" id="L38">                writer.println(&quot;Nama pelanggan\t: &quot; + customerList.get(i).getNama());</span>
+<span class="nc" id="L39">                writer.println(&quot;Alamat\t\t: &quot; + customerList.get(i).getAlamat());</span>
+<span class="nc" id="L40">                writer.println(&quot;Kontak\t\t: &quot; + customerList.get(i).getKontak());</span>
+<span class="nc" id="L41">                writer.println(&quot;Jumlah Cucian\t: &quot; + customerList.get(i).getJumlahCucian());</span>
+<span class="nc" id="L42">                writer.println(&quot;Jenis Layanan\t: &quot; + customerList.get(i).getJenisLayanan());</span>
+<span class="nc" id="L43">                writer.println(&quot;Jenis Cucian\t: &quot; + customerList.get(i).getJenisCucian() + &quot;\n&quot;);               </span>
+            }
+
+<span class="nc" id="L46">            JOptionPane.showMessageDialog(frame, &quot;Text exported to &quot; + filePath);</span>
+<span class="nc" id="L47">        } catch (IOException e) {</span>
+<span class="nc" id="L48">            JOptionPane.showMessageDialog(frame, &quot;An error occurred: &quot; + e.getMessage());</span>
+        }
+<span class="nc" id="L50">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

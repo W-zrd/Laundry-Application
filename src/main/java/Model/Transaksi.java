@@ -16,8 +16,8 @@ public class Transaksi extends Layanan {
     }
     // 1 = Reguler, 2 = Express, 3 = Kilat
     public int getBiaya(){
-        if(super.getLayanan() == "Kiloan"){
-            if(super.getWaktu()=="Regular"){
+        if(super.getLayanan().equals("Kiloan")){
+            if(super.getWaktu().equals("Regular")){
                 return (int) (6000*super.getCucian());
             }else if(super.getWaktu()=="Express"){
                 return (int) (10000*super.getCucian());
@@ -36,6 +36,5 @@ public class Transaksi extends Layanan {
         }
         return 0;
     }
-    
     
 }
